@@ -1,0 +1,22 @@
+# Node.js
+node_modules/
+.env
+
+backend/
+.env
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# VS Code settings
+.vscode/
+
+# Build folders
+dist/
+build/
