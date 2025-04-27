@@ -53,7 +53,7 @@ app.listen(port,()=>{
 })
 
 
-const cors = require('cors');
+// const cors = require('cors');
 
 // Allow only your frontend's URL
 const allowedOrigins = ['https://your-frontend-app.vercel.app'];
