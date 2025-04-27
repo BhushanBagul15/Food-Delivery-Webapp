@@ -7,7 +7,8 @@ export const StoreContext = createContext(null)
 const StoreContextProvider = (props) => {
 
     const [cartItems,setCartItems] = useState({});
-    const url = "https://food-delivery-webapp-4ybq.onrender.com/";
+    const url = import.meta.env.VITE_SERVER_URL;
+
     const [token,setToken] = useState("");
     const [food_list,setFoodList] = useState([])
 
