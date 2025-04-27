@@ -53,6 +53,23 @@ app.listen(port,()=>{
 })
 
 
+const cors = require('cors');
+
+// Allow only your frontend's URL
+const allowedOrigins = ['https://your-frontend-app.vercel.app'];
+
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+}));
+
+
+
 
 
 
