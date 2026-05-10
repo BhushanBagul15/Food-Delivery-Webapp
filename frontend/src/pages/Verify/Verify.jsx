@@ -10,13 +10,19 @@ const Verify = () => {
     const success = searchParams.get("success");
     const orderId = searchParams.get("orderId");
 
+    const hotelId = searchParams.get("hotelId");
+
     const {url} = useContext(StoreContext);  
     const navigate = useNavigate();
     
     const verifyPayment = async () => {
         const response = await axios.post(url+"/api/order/verify",{success,orderId});
         if(response.data.success){
-            navigate("/myorders");
+            if (hotelId && hotelId !== "undefined") {
+                navigate(`/hotel/${hotelId}`);
+            } else {
+                navigate("/");
+            }
         }else{
             navigate("/");
         }

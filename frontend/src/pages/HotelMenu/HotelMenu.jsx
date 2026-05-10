@@ -52,34 +52,31 @@ const HotelMenu = () => {
             </div>
 
             <div className="hotel-menu-container">
-                {menu.length > 0 && (() => {
-                    const uniqueCategories = [...new Set(menu.map(item => item.category))];
-                    const dynamicMenuList = uniqueCategories.map(cat => {
-                        const firstItem = menu.find(item => item.category === cat);
-                        return {
-                            menu_name: cat,
-                            menu_image: firstItem ? firstItem.image : "https://via.placeholder.com/100"
-                        };
-                    });
-                    
-                    return (
-                        <ExploreMenu category={category} setCategory={setCategory} menuList={dynamicMenuList} />
-                    );
-                })()}
+                {menu.length > 0 && (
+                    <ExploreMenu category={category} setCategory={setCategory} />
+                )}
 
                 <div id="hotel-menu-grid">
                     <h3>{category === "All" ? "Full Menu" : category}</h3>
-                    {menu.length === 0 ? (
-                        <p>No items found for this hotel yet.</p>
-                    ) : (
-                        <div className="hotel-menu-grid">
-                            {menu
-                                .filter(item => category === "All" || item.category === category)
-                                .map((item, index) => {
-                                return <FoodItem key={index} id={item._id} name={item.name} description={item.description} price={item.price} image={item.image} />
-                            })}
-                        </div>
-                    )}
+                    {(() => {
+                        if (menu.length === 0) {
+                            return <p>No items found for this hotel yet.</p>;
+                        }
+                        
+                        const filteredMenu = menu.filter(item => category === "All" || item.category === category);
+                        
+                        if (filteredMenu.length === 0) {
+                            return <p className="no-items-msg">Sorry, no items found in this category. You can explore different foods from the menu above!</p>;
+                        }
+                        
+                        return (
+                            <div className="hotel-menu-grid">
+                                {filteredMenu.map((item, index) => {
+                                    return <FoodItem key={index} id={item._id} name={item.name} description={item.description} price={item.price} image={item.image} />
+                                })}
+                            </div>
+                        );
+                    })()}
                 </div>
             </div>
         </div>
