@@ -17,6 +17,7 @@ import userRouter from "./routes/userRoutes.js"
 import 'dotenv/config'
 import cartRouter from "./routes/cartRoute.js"
 import orderRouter from "./routes/orderRoute.js"
+import hotelRouter from "./routes/hotelRoute.js"
 
 
 
@@ -41,6 +42,7 @@ app.use("/images",express.static('uploads'))
 app.use("/api/user",userRouter)
 app.use("/api/cart",cartRouter)
 app.use("/api/order",orderRouter)
+app.use("/api/hotel",hotelRouter)
 
 //it is an http method by which we can request the data from the server
 app.get("/",(req,res)=>{

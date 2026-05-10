@@ -8,6 +8,7 @@ import Footer from './components/Footer/Footer'
 import LoginPopup from './components/LoginPopup/LoginPopup'
 import Verify from './pages/Verify/Verify'
 import Myorders from './pages/Myorders/Myorders'
+import HotelMenu from './pages/HotelMenu/HotelMenu'
 
 // here we will setup the routes
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
       <Navbar setShowLogin={setShowLogin}/>
       <Routes>
          <Route path='/' element={<Home/>} />
+         <Route path='/hotel/:id' element={<HotelMenu/>} />
          <Route path='/cart' element={<Cart/>} />
          <Route path='/order' element={<PlaceOrder/>} />
          <Route path='/verify' element={<Verify/>}/>
